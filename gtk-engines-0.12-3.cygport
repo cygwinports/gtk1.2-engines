@@ -1,0 +1,15 @@
+DESCRIPTION=
+HOMEPAGE="http://www.gnome.org/"
+SRC_URI="mirror://gnome/sources/${PN}/${PV}/${P}.tar.gz"
+
+DIFF_EXCLUDES="acinclude.m4"
+
+src_compile() {
+	cd ${S}
+	rm -f acinclude.m4
+	cygautoreconf
+
+	cd ${B}
+	cygconf
+	cygmake
+}

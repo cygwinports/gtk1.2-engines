@@ -1,9 +1,7 @@
 gtk-engines
 -------------------------------------------
-This package provides five sample theme engines for GTK+:
+This package provides four sample theme engines for GTK+:
 
- Pixmap: A generic engine that renders using pixmaps.
-   One theme using this theme engine is included.
  Metal: A fairly complete theme engine that looks like the
    Java-Metal look of Swing.
  Raleigh: An improved version of the default GTK+ theme.
@@ -12,28 +10,25 @@ This package provides five sample theme engines for GTK+:
  Notif: A simple Motif-look-alike theme
 
 Runtime requirements:
-  cygwin-1.5.18-1
+  cygwin-1.5.24-2
   glib-1.2.10-3
   gtk+-1.2.10-2
-  imlib-0.9.14-2
-  libiconv2-1.9.2-1
-  libintl3-0.14.1-1
-  xorg-x11-bin-dlls-6.8.2.0-1
 
 Build requirements:
-  cygwin-1.5.18-1
-  binutils-20050610-1
-  gawk-3.1.4-3
-  gcc-core-3.4.4-1
-  make-3.80-1
-  sed-4.1.4-1
+(besides corresponding devel packages)
+  cygwin-1.5.24-2
+  autoconf2.5-2.61-1
+  automake1.4-1.4p6-3
+  binutils-20060817-1
+  cygport-0.3.7-1
+  gawk-3.1.5-4
+  gcc-core-3.4.4-3
+  libtool1.5-1.5.23a-2
+  make-3.81-1
+  sed-4.1.5-2
 
-  gettext-0.14.1-1
-  glib-devel-1.2.10-3
-  gtk+-devel-1.2.10-2
-  imlib-0.9.14-2
-  libiconv-1.9.2-1
-  xorg-x11-devel-6.8.2.0-1
+Canonical homepage:
+  http://www.gnome.org/
 
 Canonical download:
   ftp://ftp.gnome.org/pub/GNOME/sources/gtk-engines/
@@ -41,15 +36,15 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack gtk-engines-0.12-2-src.tar.bz2
+  unpack gtk-engines-0.12-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  ./gtk-engines-0.12-2.sh all
+  cygport ./gtk-engines-0.12-X.cygport all
 
 This will create:
-  /usr/src/gtk-engines-0.12-2-src.tar.bz2
-  /usr/src/gtk-engines-0.12-2.tar.bz2
+  /usr/src/gtk-engines-0.12-X-src.tar.bz2
+  /usr/src/gtk-engines-0.12-X.tar.bz2
 
 -------------------------------------------
 
@@ -57,18 +52,11 @@ Files included in the binary package:
 
   /usr/lib/gtk/themes/engines/cygmetal.dll
   /usr/lib/gtk/themes/engines/cygnotif.dll
-  /usr/lib/gtk/themes/engines/cygpixmap.dll
   /usr/lib/gtk/themes/engines/cygraleigh.dll
   /usr/lib/gtk/themes/engines/cygredmond95.dll
-  /usr/lib/gtk/themes/engines/libmetal.dll.a
   /usr/lib/gtk/themes/engines/libmetal.la
-  /usr/lib/gtk/themes/engines/libnotif.dll.a
   /usr/lib/gtk/themes/engines/libnotif.la
-  /usr/lib/gtk/themes/engines/libpixmap.dll.a
-  /usr/lib/gtk/themes/engines/libpixmap.la
-  /usr/lib/gtk/themes/engines/libraleigh.dll.a
   /usr/lib/gtk/themes/engines/libraleigh.la
-  /usr/lib/gtk/themes/engines/libredmond95.dll.a
   /usr/lib/gtk/themes/engines/libredmond95.la
   /usr/share/doc/Cygwin/gtk-engines-0.12.README
   /usr/share/doc/gtk-engines-0.12/AUTHORS
@@ -79,90 +67,23 @@ Files included in the binary package:
   /usr/share/doc/gtk-engines-0.12/README
   /usr/share/themes/Metal/gtk/gtkrc
   /usr/share/themes/Metal/ICON.png
+  /usr/share/themes/Metal/README.html
   /usr/share/themes/Notif/gtk/gtkrc
   /usr/share/themes/Notif/ICON.png
   /usr/share/themes/Notif/README.html
-  /usr/share/themes/Pixmap/gtk/arrow_down1.png
-  /usr/share/themes/Pixmap/gtk/arrow_down2.png
-  /usr/share/themes/Pixmap/gtk/arrow_down3.png
-  /usr/share/themes/Pixmap/gtk/arrow_left1.png
-  /usr/share/themes/Pixmap/gtk/arrow_left2.png
-  /usr/share/themes/Pixmap/gtk/arrow_left3.png
-  /usr/share/themes/Pixmap/gtk/arrow_right1.png
-  /usr/share/themes/Pixmap/gtk/arrow_right2.png
-  /usr/share/themes/Pixmap/gtk/arrow_right3.png
-  /usr/share/themes/Pixmap/gtk/arrow_up1.png
-  /usr/share/themes/Pixmap/gtk/arrow_up2.png
-  /usr/share/themes/Pixmap/gtk/arrow_up3.png
-  /usr/share/themes/Pixmap/gtk/brown_bg1.png
-  /usr/share/themes/Pixmap/gtk/brown_bg2.png
-  /usr/share/themes/Pixmap/gtk/button1.png
-  /usr/share/themes/Pixmap/gtk/button2.png
-  /usr/share/themes/Pixmap/gtk/button3.png
-  /usr/share/themes/Pixmap/gtk/button4.png
-  /usr/share/themes/Pixmap/gtk/button5.png
-  /usr/share/themes/Pixmap/gtk/button6.png
-  /usr/share/themes/Pixmap/gtk/button7.png
-  /usr/share/themes/Pixmap/gtk/button8.png
-  /usr/share/themes/Pixmap/gtk/button9.png
-  /usr/share/themes/Pixmap/gtk/button_def.png
-  /usr/share/themes/Pixmap/gtk/check1.png
-  /usr/share/themes/Pixmap/gtk/check2.png
-  /usr/share/themes/Pixmap/gtk/curve_bg1.png
-  /usr/share/themes/Pixmap/gtk/entry1.png
-  /usr/share/themes/Pixmap/gtk/entry2.png
-  /usr/share/themes/Pixmap/gtk/extension_bottom1.png
-  /usr/share/themes/Pixmap/gtk/extension_left1.png
-  /usr/share/themes/Pixmap/gtk/extension_right1.png
-  /usr/share/themes/Pixmap/gtk/extension_top1.png
-  /usr/share/themes/Pixmap/gtk/focus.png
-  /usr/share/themes/Pixmap/gtk/frame1.png
-  /usr/share/themes/Pixmap/gtk/frame2.png
-  /usr/share/themes/Pixmap/gtk/frame_gap.png
-  /usr/share/themes/Pixmap/gtk/frame_gap_top_end.png
-  /usr/share/themes/Pixmap/gtk/frame_gap_top_start.png
-  /usr/share/themes/Pixmap/gtk/gap_bottom.png
-  /usr/share/themes/Pixmap/gtk/gap_bottom_end.png
-  /usr/share/themes/Pixmap/gtk/gap_bottom_start.png
-  /usr/share/themes/Pixmap/gtk/gap_left.png
-  /usr/share/themes/Pixmap/gtk/gap_left_end.png
-  /usr/share/themes/Pixmap/gtk/gap_left_start.png
-  /usr/share/themes/Pixmap/gtk/gap_right.png
-  /usr/share/themes/Pixmap/gtk/gap_right_end.png
-  /usr/share/themes/Pixmap/gtk/gap_right_start.png
-  /usr/share/themes/Pixmap/gtk/gap_top.png
-  /usr/share/themes/Pixmap/gtk/gap_top_end.png
-  /usr/share/themes/Pixmap/gtk/gap_top_start.png
-  /usr/share/themes/Pixmap/gtk/gtkrc
-  /usr/share/themes/Pixmap/gtk/handle_vert_thumb.png
-  /usr/share/themes/Pixmap/gtk/hline.png
-  /usr/share/themes/Pixmap/gtk/menubar.png
-  /usr/share/themes/Pixmap/gtk/notebook1.png
-  /usr/share/themes/Pixmap/gtk/option1.png
-  /usr/share/themes/Pixmap/gtk/option2.png
-  /usr/share/themes/Pixmap/gtk/option_menu.png
-  /usr/share/themes/Pixmap/gtk/progressbar.png
-  /usr/share/themes/Pixmap/gtk/ruler_horiz.png
-  /usr/share/themes/Pixmap/gtk/ruler_vert.png
-  /usr/share/themes/Pixmap/gtk/scrollbar_horiz1.png
-  /usr/share/themes/Pixmap/gtk/scrollbar_thumb.png
-  /usr/share/themes/Pixmap/gtk/scrollbar_thumb2.png
-  /usr/share/themes/Pixmap/gtk/scrollbar_vert1.png
-  /usr/share/themes/Pixmap/gtk/shadow1.png
-  /usr/share/themes/Pixmap/gtk/shadow2.png
-  /usr/share/themes/Pixmap/gtk/trough.png
-  /usr/share/themes/Pixmap/gtk/vline.png
-  /usr/share/themes/Pixmap/ICON.png
-  /usr/share/themes/Pixmap/README.html
   /usr/share/themes/Raleigh/gtk/gtkrc
   /usr/share/themes/Raleigh/ICON.png
   /usr/share/themes/Raleigh/README.html
   /usr/share/themes/Redmond95/gtk/gtkrc
   /usr/share/themes/Redmond95/ICON.png
+  /usr/share/themes/Redmond95/README.html
 
 ------------------
 
 Port Notes:
+
+----- version 0.12-3 -----
+Disabled Pixmap theme to remove gdk_imlib dependency.
 
 ----- version 0.12-2 -----
 Rebuilt with gcc-3.4 and updated dependencies.
@@ -172,4 +93,5 @@ Removed theme README.html files which conflicted with gtk2-x11-engines.
 Initial release for Cygwin.
 
 
-Cygwin port maintained by:  http://cygwin-ports.sourceforge.net/
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/

@@ -1,0 +1,82 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/Makefile.am src/gtk-engines-0.12/Makefile.am
+--- origsrc/gtk-engines-0.12/Makefile.am	2001-03-02 21:15:16.000000000 -0600
++++ src/gtk-engines-0.12/Makefile.am	2007-12-16 13:04:12.781250000 -0600
+@@ -1,4 +1,8 @@
+-SUBDIRS = pixmap redmond95 notif metal raleigh
++if HAVE_GDK_IMLIB
++pixmap_dir = pixmap
++endif
++
++SUBDIRS = $(pixmap_dir) redmond95 notif metal raleigh
+ 
+ EXTRA_DIST = gtk-engines.spec.in makefile.cygwin makefile.msc README.win32
+ 
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/configure.in src/gtk-engines-0.12/configure.in
+--- origsrc/gtk-engines-0.12/configure.in	2001-03-15 01:07:24.000000000 -0600
++++ src/gtk-engines-0.12/configure.in	2007-12-16 13:06:17.906250000 -0600
+@@ -33,7 +33,10 @@
+ AM_PATH_GTK(1.2.9, , 
+ 	AC_MSG_ERROR([*** GTK+-1.2.9 not installed - please install first ***]))
+ AM_PATH_GDK_IMLIB(1.8, ,
+-        AC_MSG_ERROR([*** IMLIB 1.8 not installed - please install first ***]))
++	have_gdk_imlib=no
++	AC_MSG_NOTICE([*** IMLIB 1.8 not installed - pixmap engine will be disabled ***]))
++
++AM_CONDITIONAL(HAVE_GDK_IMLIB, test "x$have_gdk_imlib" != "xno")
+ 
+ AC_CHECK_LIB(gtk, gtk_style_set_prop_experimental, :,
+ 	     AC_MSG_ERROR([*** gtk_style_set_prop_experimental() not found; perhaps you have an old CVS version of GTK+ ***]),
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/metal/Makefile.am src/gtk-engines-0.12/metal/Makefile.am
+--- origsrc/gtk-engines-0.12/metal/Makefile.am	1999-05-30 03:45:05.000000000 -0500
++++ src/gtk-engines-0.12/metal/Makefile.am	2007-12-16 13:03:05.250000000 -0600
+@@ -11,6 +11,6 @@
+ 	metal_theme_draw.c	\
+ 	metal_theme_main.c
+ 
+-libmetal_la_LDFLAGS = -module -avoid-version
++libmetal_la_LDFLAGS = -module -avoid-version -no-undefined
+ libmetal_la_LIBADD = $(GTK_LIBS)
+ 
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/notif/Makefile.am src/gtk-engines-0.12/notif/Makefile.am
+--- origsrc/gtk-engines-0.12/notif/Makefile.am	1999-05-30 03:45:08.000000000 -0500
++++ src/gtk-engines-0.12/notif/Makefile.am	2007-12-16 13:03:08.890625000 -0600
+@@ -9,6 +9,6 @@
+ 	notif_theme_draw.c	\
+ 	notif_theme_main.c
+ 
+-libnotif_la_LDFLAGS = -module -avoid-version
++libnotif_la_LDFLAGS = -module -avoid-version -no-undefined
+ libnotif_la_LIBADD = $(GTK_LIBS)
+ 
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/pixmap/Makefile.am src/gtk-engines-0.12/pixmap/Makefile.am
+--- origsrc/gtk-engines-0.12/pixmap/Makefile.am	1999-02-02 08:25:04.000000000 -0600
++++ src/gtk-engines-0.12/pixmap/Makefile.am	2007-12-16 13:03:12.390625000 -0600
+@@ -11,5 +11,5 @@
+ 	pixmap_theme_main.c	\
+ 	pixmap_theme.h
+ 
+-libpixmap_la_LDFLAGS = -module -avoid-version
++libpixmap_la_LDFLAGS = -module -avoid-version -no-undefined
+ libpixmap_la_LIBADD = $(GDK_IMLIB_LIBS)
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/raleigh/Makefile.am src/gtk-engines-0.12/raleigh/Makefile.am
+--- origsrc/gtk-engines-0.12/raleigh/Makefile.am	2000-11-21 17:37:02.000000000 -0600
++++ src/gtk-engines-0.12/raleigh/Makefile.am	2007-12-16 13:03:15.796875000 -0600
+@@ -10,6 +10,6 @@
+ 	raleigh_theme_draw.c	\
+ 	raleigh_theme_main.c
+ 
+-libraleigh_la_LDFLAGS = -module -avoid-version
++libraleigh_la_LDFLAGS = -module -avoid-version -no-undefined
+ libraleigh_la_LIBADD = $(GTK_LIBS)
+ 
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in -x acinclude.m4 origsrc/gtk-engines-0.12/redmond95/Makefile.am src/gtk-engines-0.12/redmond95/Makefile.am
+--- origsrc/gtk-engines-0.12/redmond95/Makefile.am	1999-05-30 03:45:11.000000000 -0500
++++ src/gtk-engines-0.12/redmond95/Makefile.am	2007-12-16 13:03:19.421875000 -0600
+@@ -10,6 +10,6 @@
+ 	redmond95_theme_draw.c	\
+ 	redmond95_theme_main.c
+ 
+-libredmond95_la_LDFLAGS = -module -avoid-version
++libredmond95_la_LDFLAGS = -module -avoid-version -no-undefined
+ libredmond95_la_LIBADD = $(GTK_LIBS)
+ 
