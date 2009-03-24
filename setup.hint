@@ -1,10 +1,12 @@
-category: Gnome X11
-requires: cygwin glib gtk+
+category: Gnome
+requires: cygwin libgcc1 libgdk_pixbuf1 libglib1.2_0 libgtk1.2_0
 sdesc: "Theme engines for GTK+ 1.2"
-ldesc: "This package provides four sample theme engines for GTK+.
+ldesc: "This package provides five theme engines for GTK+.
  Metal -- A fairly complete theme engine that looks like the
    Java-Metal look of Swing.
  Raleigh -- An improved version of the default GTK+ theme.
  Redmond95 -- A simple theme engine that looks a bit like
    Microsoft Windows95.
- Notif -- A simple Motif-look-alike theme"
+ Notif -- A simple Motif-look-alike theme
+ Pixmap: A generic engine that renders using pixmaps.
+   One theme using this theme engine is included."

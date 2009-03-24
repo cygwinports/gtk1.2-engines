@@ -1,0 +1,26 @@
+--- origsrc/gtk-engines-0.12/Makefile.am	2001-03-02 21:15:16.000000000 -0600
++++ src/gtk-engines-0.12/Makefile.am	2007-12-16 13:04:12.781250000 -0600
+@@ -1,4 +1,8 @@
+-SUBDIRS = pixmap redmond95 notif metal raleigh
++if HAVE_GDK_IMLIB
++pixmap_dir = pixmap
++endif
++
++SUBDIRS = $(pixmap_dir) redmond95 notif metal raleigh
+ 
+ EXTRA_DIST = gtk-engines.spec.in makefile.cygwin makefile.msc README.win32
+ 
+--- origsrc/gtk-engines-0.12/configure.in	2001-03-15 01:07:24.000000000 -0600
++++ src/gtk-engines-0.12/configure.in	2007-12-16 13:06:17.906250000 -0600
+@@ -33,7 +33,10 @@
+ AM_PATH_GTK(1.2.9, , 
+ 	AC_MSG_ERROR([*** GTK+-1.2.9 not installed - please install first ***]))
+ AM_PATH_GDK_IMLIB(1.8, ,
+-        AC_MSG_ERROR([*** IMLIB 1.8 not installed - please install first ***]))
++	have_gdk_imlib=no
++	AC_MSG_NOTICE([*** IMLIB 1.8 not installed - pixmap engine will be disabled ***]))
++
++AM_CONDITIONAL(HAVE_GDK_IMLIB, test "x$have_gdk_imlib" != "xno")
+ 
+ AC_CHECK_LIB(gtk, gtk_style_set_prop_experimental, :,
+ 	     AC_MSG_ERROR([*** gtk_style_set_prop_experimental() not found; perhaps you have an old CVS version of GTK+ ***]),
