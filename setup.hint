@@ -1,5 +1,5 @@
 category: Gnome
-requires: cygwin libgcc1 libgdk_pixbuf1 libglib1.2_0 libgtk1.2_0
+requires: libgcc1 libgdk_pixbuf1 libglib1.2_0 libgtk1.2_0
 sdesc: "Theme engines for GTK+ 1.2"
 ldesc: "This package provides five theme engines for GTK+.
  Metal -- A fairly complete theme engine that looks like the
