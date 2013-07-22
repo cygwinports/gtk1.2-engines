@@ -13,3 +13,5 @@ DISTCLEANFILES="acinclude.m4"
 
 # for libtool 2.x
 WANT_AUTOMAKE=1.9
+
+KEEP_LA_FILES="none"
