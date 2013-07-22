@@ -1,8 +1,0 @@
-ORIG_PN="gtk-engines"
-inherit gnome.org
-
-DESCRIPTION="GTK+ 1.2 theme engines"
-SRC_URI=${SRC_URI%.bz2}.gz
-PATCH_URI="0.12-no-undefined.patch"
-
-DISTCLEANFILES="acinclude.m4"

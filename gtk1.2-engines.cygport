@@ -1,0 +1,15 @@
+NAME="gtk1.2-engines"
+VERSION=0.12
+RELEASE=11
+CATEGORY="X11"
+SUMMARY="Theme engines for GTK+ 1.2"
+DESCRIPTION="This package provides five theme engines for GTK+ 1.2."
+HOMEPAGE="http://www.gnome.org/"
+SRC_URI="mirror://gnome/sources/gtk-engines/${VERSION}/gtk-engines-${VERSION}.tar.gz"
+SRC_DIR="gtk-engines-${VERSION}"
+PATCH_URI="0.12-no-undefined.patch"
+
+DISTCLEANFILES="acinclude.m4"
+
+# for libtool 2.x
+WANT_AUTOMAKE=1.9
